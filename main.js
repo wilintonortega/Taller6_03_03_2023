@@ -3,7 +3,9 @@ export default{
     // miBoton:document.querySelector("#btn-calc2"),
     // miCaja:document.querySelector("#preciob2"),
     miRes:document.querySelector("#res2"),
-    data:[],
+    pcontar:document.querySelector("#pcontar"),
+    data : [],
+    cantidad:0,
     stopEnvio(){
         this.miFormulario.addEventListener("submit", (e)=>{
             //Obtener los datos del formulario y tranformarlo en un objeto nativo de javaScript
@@ -19,9 +21,18 @@ export default{
         })
     },
     calcularNota(data) {
-
-    this.miRes.insertAdjacentHTML("afterbegin",`<p>Estudiante ${data.nombre}  -  Nota promedio: ${((Number.parseFloat(data.nota1)+Number.parseFloat(data.nota2)+Number.parseFloat(data.nota3))/3).toFixed(2)} </p>`)
-         
+        let promedio=(((Number.parseFloat(data.nota1)+Number.parseFloat(data.nota2)+Number.parseFloat(data.nota3)+Number.parseFloat(data.nota4)+Number.parseFloat(data.nota5))/5).toFixed(2))
+    
+    if(promedio<5){
+        this.miRes.insertAdjacentHTML("afterbegin",`<p class="nopass">Estudiante ${data.nombre}  -  Nota promedio: ${promedio} </p>`)
+       this.cantidad += 1;
+        }  
+        else{
+            this.miRes.insertAdjacentHTML("afterbegin",`<p class="pass">Estudiante ${data.nombre}  -  Nota promedio: ${promedio} </p>`)  
+        }        
+        
+        this.pcontar.innerHTML=(`<p>Cantidad de estudiantes por nivelar: ${this.cantidad}</p>`)
+        console.log(this.cantidad)
     }
 
 }

@@ -19,3 +19,9 @@ html{
     left:100px;
     border-radius: 20px;
 }
+.pass{
+    background-color:hsla(120, 100%, 50%, 0.2)
+}
+.nopass{
+    background-color:hsla(356, 100%, 50%, 0.2)
+}
