@@ -10,18 +10,22 @@
     <script src="./taller.js" type="module" defer></script>
 </head>
 <body>
-    <h1>Ejercio 2 - Calcular sueldo trabajadores</h1>
-    <h4><blockquote>Calcular el sueldo que le corresponde al trabajador de una empresa que cobra $14.400.000 anual, el programa debe realizar los cálculos en función de los siguientes criterios:</blockquote></h4>
-        <blockquote><ul>
-            <li>Si lleva más de 10 años en la empresa se le aplica un aumento del 10%.</li>
-            <li>Si lleva menos de 10 años, pero más que 5 se le aplica un aumento del 7%.</li>
-            <li>Si lleva menos de 5 años, pero más que 3 se le aplica un aumento del 5%.</li>
-            <li>Si lleva menos de 3 años se le aplica un aumento del 3%.</li>
-        </ul></blockquote>
+    <h1>Ejercio 3 - Calcular notas</h1>
+    <h4><blockquote>Programa para solicitar el nombre, y la nota promedio de 5 estudiantes de un curso de computación.</blockquote>
     <form id="formtaller">
-        <label for="preciob">Años laborando.:</label>
-        <input name="cantidadYear" type="text" placeholder="Ingrese cantidad de años" id="cYear">
 
+        <label for="nombre">Nombre Estudiante.:</label>
+        <input name="nombre" type="text" placeholder="Ingrese nombre de estudiante" id="nombre"><br>
+
+        <label for="nota1">Nota 1.:</label>
+        <input name="nota1" type="text" placeholder="Ingrese Nota 1" id="nota1"><br>
+      
+        <label for="nota2">Nota 2.:</label>
+        <input name="nota2" type="text" placeholder="Ingrese Nota 2" id="nota2"><br>
+        
+        <label for="nota3">Nota 3.:</label>
+        <input name="nota3" type="text" placeholder="Ingrese Nota 3" id="nota3"><br>
+    
         <p id="res2"></p>
         <br>
         <input type="submit" value="Calcular" id="btn-calc2">

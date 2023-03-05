@@ -1,9 +1,8 @@
 export default{
     miFormulario:document.querySelector("#formtaller"),
-    miBoton:document.querySelector("#btn-calc2"),
-    miCaja:document.querySelector("#preciob2"),
+    // miBoton:document.querySelector("#btn-calc2"),
+    // miCaja:document.querySelector("#preciob2"),
     miRes:document.querySelector("#res2"),
-    Sanual:14400000,
     data:[],
     stopEnvio(){
         this.miFormulario.addEventListener("submit", (e)=>{
@@ -12,30 +11,17 @@ export default{
             //Detener el envio de datos por la url del lugar donde se encuentra el formulario
             let data=Object.fromEntries(new FormData(e.target));
             //llamo a funcion creada
-            this.calcularSueldo(data)
+            this.calcularNota(data)
             //limpiar valores formulario (cajas de texto)
             this.miFormulario.reset();
-            console.log(data);
+            console.table(data);
            e.preventDefault();
         })
     },
-    calcularSueldo(data) {
-         if (data.cantidadYear >= 10){
-            this.miRes.insertAdjacentHTML("afterend",`<p> La cantidad de años es ${data.cantidadYear} y su aumento es de 10% es decir: Salario Mensual -> ${((this.Sanual/12)*1.1).toFixed(0)} y un Salario Anual de ${((this.Sanual)*1.1).toFixed(0)} </p>`);
-        }
-        else if(data.cantidadYear > 5){ 
-           
-            this.miRes.insertAdjacentHTML("afterend",`<p> La cantidad de años es ${data.cantidadYear} y su aumento es de 7% es decir: Salario Mensual -> ${((this.Sanual/12)*1.07).toFixed(0)} y un Salario Anual de ${((this.Sanual)*1.07).toFixed(0)} </p>`);
-            }
-        else if(data.cantidadYear >= 3 ){ 
-           
-            this.miRes.insertAdjacentHTML("afterend",`<p> La cantidad de años es ${data.cantidadYear} y su aumento es de 5% es decir: Salario Mensual -> ${((this.Sanual/12)*1.05).toFixed(0)} y un Salario Anual de ${((this.Sanual)*1.05).toFixed(0)} </p>`);
-            }
-        else {
-            this.miRes.insertAdjacentHTML("afterend",`<p> La cantidad de años es ${data.cantidadYear} y su aumento es de 3% es decir: Salario Mensual -> ${((this.Sanual/12)*1.03).toFixed(0)} y un Salario Anual de ${((this.Sanual)*1.03).toFixed(0)}</p>`);
-        }
+    calcularNota(data) {
 
-
+    this.miRes.insertAdjacentHTML("afterbegin",`<p>Estudiante ${data.nombre}  -  Nota promedio: ${((Number.parseFloat(data.nota1)+Number.parseFloat(data.nota2)+Number.parseFloat(data.nota3))/3).toFixed(2)} </p>`)
+         
     }
 
 }
