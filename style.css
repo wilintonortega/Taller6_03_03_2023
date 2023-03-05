@@ -4,7 +4,7 @@
 html{
     font-family: 'Tilt Neon', cursive;
 }
-#preciob2{
+#cYear{
     height: 30px;
     border-radius: 20px;
 }
@@ -17,4 +17,5 @@ html{
     background: linear-gradient(45deg, #8ad192, #03a9f461);
     font-family: 'Tilt Neon';
     left:100px;
+    border-radius: 20px;
 }
