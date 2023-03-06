@@ -1,11 +1,7 @@
 export default{
     miFormulario:document.querySelector("#formtaller"),
-    // miBoton:document.querySelector("#btn-calc2"),
-    // miCaja:document.querySelector("#preciob2"),
     miRes:document.querySelector("#res2"),
-    pcontar:document.querySelector("#pcontar"),
     data : [],
-    cantidad:0,
     stopEnvio(){
         this.miFormulario.addEventListener("submit", (e)=>{
             //Obtener los datos del formulario y tranformarlo en un objeto nativo de javaScript
@@ -13,26 +9,27 @@ export default{
             //Detener el envio de datos por la url del lugar donde se encuentra el formulario
             let data=Object.fromEntries(new FormData(e.target));
             //llamo a funcion creada
-            this.calcularNota(data)
+            this.caracter(data)
             //limpiar valores formulario (cajas de texto)
             this.miFormulario.reset();
             console.table(data);
            e.preventDefault();
         })
     },
-    calcularNota(data) {
-        let promedio=(((Number.parseFloat(data.nota1)+Number.parseFloat(data.nota2)+Number.parseFloat(data.nota3)+Number.parseFloat(data.nota4)+Number.parseFloat(data.nota5))/5).toFixed(2))
-    
-    if(promedio<5){
-        this.miRes.insertAdjacentHTML("afterbegin",`<p class="nopass">Estudiante ${data.nombre}  -  Nota promedio: ${promedio} </p>`)
-       this.cantidad += 1;
-        }  
-        else{
-            this.miRes.insertAdjacentHTML("afterbegin",`<p class="pass">Estudiante ${data.nombre}  -  Nota promedio: ${promedio} </p>`)  
-        }        
-        
-        this.pcontar.innerHTML=(`<p>Cantidad de estudiantes por nivelar: ${this.cantidad}</p>`)
-        console.log(this.cantidad)
-    }
+    caracter(data) {
 
+        console.log(`${typeof(data.letra)} --${data.letra}  ` ); 
+        console.log(/[0-9]/g.test(data.letra));
+
+        //uso regular expresions
+        if(/[0-9]/g.test(data.letra)){
+            this.miRes.insertAdjacentHTML("afterbegin",`<p>La letra  ${data.letra} es un numero </p>`)
+        }else if(/[a-z]/g.test(data.letra)){
+            this.miRes.insertAdjacentHTML("afterbegin",`<p>La letra  ${data.letra} es una minuscula </p>`)
+        }else if(/[A-Z]/g.test(data.letra)){
+            this.miRes.insertAdjacentHTML("afterbegin",`<p>La letra  ${data.letra} es una mayuscula </p>`)
+        }else{
+            this.miRes.insertAdjacentHTML("afterbegin",`<p>La letra  ${data.letra} no es un caracter alfanumerico</p>`)  
+        }  
+    }
 }
